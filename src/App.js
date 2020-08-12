@@ -1,28 +1,28 @@
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////Pseudocode////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// This app will allow the user to click on buttons to see all the major and minor chords that can be played on a guitar
+// There are 7 major and 7 minor chords and so the user can click on 14 buttons in total
+// Each button will toggle a corresponding image showing how to play a chord (each button is labeled with a chord name)
+// Each button will have its own state defined in this.state; in this case each state will have a value of false and will be toggled to true when the user clicks the button
+// Individual functions will be applied to each individual button that will trigger only that button's state to toggle between true and false
+// The reason for using boolean states is so ternary conditions can be used
+// Essentially the condition will be 'if this.state.{Name of chord} is true ? display image of that chord (<img> tag) : else, display nothing
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 import React, { Component } from 'react';
-import firebase from './firebase'
-import './App.css';
-import image1 from './assets/Amajor.png'
-import image2 from './assets/Bmajor.png'
-import image3 from './assets/Cmajor.png'
-import image4 from './assets/Dmajor.png'
-import image5 from './assets/Emajor.png'
-import image6 from './assets/Fmajor.png'
-import image7 from './assets/Gmajor.png'
-import image8 from './assets/Aminor.png'
-import image9 from './assets/Bminor.png'
-import image10 from './assets/Cminor.png'
-import image11 from './assets/Dminor.png'
-import image12 from './assets/Eminor.png'
-import image13 from './assets/Fminor.png'
-import image14 from './assets/Gminor.png'
+import firebase from './firebase';
+import './index.css';
 
 class App extends Component {
   constructor() {
     super();
 
     this.state = {
-      // Setting the property showChordImage to false to be used later in conditional rendering
-      // This will ensure that no image shows up when the app is loaded
+      // Setting the states of chord properties to false to be used later in ternary conditional rendering
+      // Setting them to false here will ensure that no image shows up when the app is loaded
       showAmajChord: false,
       showBmajChord: false,
       showCmajChord: false,
@@ -37,40 +37,42 @@ class App extends Component {
       showEminChord: false,
       showFminChord: false,
       showGminChord: false,
+      // Setting the state of 'chords' array to be empty
+      // This array will be populated with image URLs pulled from the firebase database
+      chords: [],
     }
   }
 
   componentDidMount() {
     // Creating a variable that holds a reference to the firebase database
-    const dbRef = firebase.database().ref();
+    const imageURLsRef = firebase.database().ref();
 
-    dbRef.on('value', (response) => {
-      console.log(response.val());
+    imageURLsRef.on('value', (response) => {
       
-      // A variable that will store the new state
+      // A variable that will store the new state of the empty 'chords' array defined above
       const newState = [];
 
       // Storing the response value from firebase into a new variable
       const chordsCollection = response.val();
 
       // The for loop here is used to turn the object chordsCollection into an array
-      // 'Key' here is used to represent the index of each entry in the object
       for (let key in chordsCollection) {
 
         // Using the .push method to push the values from the object chordsCollection into the empty array newState
         newState.push(chordsCollection[key]);
       }
 
-      // then, we call this.setState in order to update our component's state using the local array newState
+      // Setting the state of 'chords' array to 'newState' using this.setState
       this.setState({
         chords: newState
       });
-
-      console.log(newState);
     });
   }
 
-  // Functions to be applied to the buttons that will change the states to be true on button click and then false again on the next click
+  // Below are functions that will be applied to the onClick method on the buttons that will change the states to be true on button click and then false again on the next click
+  // Individual toggle functions for each chord are defined so that only the state of the individual button that is clicked on is changed and only that button's image shows
+  // For example, setting the state of showAmajChord to !this.state.showAmajChord will change the state from false to true rendering the image on the screen (see ternary condition statements starting line 206); the next click will again change the state back to false
+
   toggleAmajChord = () => {
     this.setState({
       showAmajChord: !this.state.showAmajChord
@@ -157,53 +159,67 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App" className="wrapper">
+      <div className="App wrapper">
         <div className="infoContainer">
           <h1>learn how to play all the major and minor guitar chords</h1>
           <h2>click any button below to see a picture of how to play that chord</h2>
         </div>
+
         <p>click a button once to see the picture and click it again to remove it from the screen</p>
-        <div className="buttons">
-          <button onClick={this.toggleAmajChord}>A Major</button>
-          <button onClick={this.toggleBmajChord}>B Major</button>
-          <button onClick={this.toggleCmajChord}>C Major</button>
-          <button onClick={this.toggleDmajChord}>D Major</button>
-          <button onClick={this.toggleEmajChord}>E Major</button>
-          <button onClick={this.toggleFmajChord}>F Major</button>
-          <button onClick={this.toggleGmajChord}>G Major</button>
-          <button onClick={this.toggleAminChord}>A minor</button>
-          <button onClick={this.toggleBminChord}>B minor</button>
-          <button onClick={this.toggleCminChord}>C minor</button>
-          <button onClick={this.toggleDminChord}>D minor</button>
-          <button onClick={this.toggleEminChord}>E minor</button>
-          <button onClick={this.toggleFminChord}>F minor</button>
-          <button onClick={this.toggleGminChord}>G minor</button>
+        
+        <div className="buttons wrapper">
+          <div className="major">
+            <h2>major chords</h2>
+            {/* Applying the unique toggle functions defined above to each respective individual button */}
+            <button onClick={this.toggleAmajChord}>A Major</button>
+            <button onClick={this.toggleBmajChord}>B Major</button>
+            <button onClick={this.toggleCmajChord}>C Major</button>
+            <button onClick={this.toggleDmajChord}>D Major</button>
+            <button onClick={this.toggleEmajChord}>E Major</button>
+            <button onClick={this.toggleFmajChord}>F Major</button>
+            <button onClick={this.toggleGmajChord}>G Major</button>
+          </div>
+          <div className="minor">
+            <h2>minor chords</h2>
+            <button onClick={this.toggleAminChord}>A minor</button>
+            <button onClick={this.toggleBminChord}>B minor</button>
+            <button onClick={this.toggleCminChord}>C minor</button>
+            <button onClick={this.toggleDminChord}>D minor</button>
+            <button onClick={this.toggleEminChord}>E minor</button>
+            <button onClick={this.toggleFminChord}>F minor</button>
+            <button onClick={this.toggleGminChord}>G minor</button>
+          </div>
         </div>
-        <div className="chordImages">
+
+        <div>
+
           {/*
-          A ternary conditional statement that checks the boolean status of this.state.showChord
-          When true, it will add an img tag to the DOM 
+          Using ternary conditional statements that check the boolean status of this.state.show***Chord.
+          When true, it will add an img tag to the DOM : else, it will remove the image from the DOM
 
           Referenced code from following website: https://www.quora.com/Using-React-what-is-the-best-way-to-show-and-hide-an-image
           Credit goes to users: Tobias Zucali and Robin Wieruch
           */}
-          { this.state.showAmajChord ? (<img src={image1} alt="The fingering pattern of the A major Chord"/>) : null }
-          { this.state.showBmajChord ? (<img src={image2} alt="The fingering pattern of the B major Chord"/>) : null }
-          { this.state.showCmajChord ? (<img src={image3} alt="The fingering pattern of the C major Chord"/>) : null }
-          { this.state.showDmajChord ? (<img src={image4} alt="The fingering pattern of the D major Chord"/>) : null }
-          { this.state.showEmajChord ? (<img src={image5} alt="The fingering pattern of the E major Chord"/>) : null }
-          { this.state.showFmajChord ? (<img src={image6} alt="The fingering pattern of the F major Chord"/>) : null }
-          { this.state.showGmajChord ? (<img src={image7} alt="The fingering pattern of the G major Chord"/>) : null }
-          { this.state.showAminChord ? (<img src={image8} alt="The fingering pattern of the A minor Chord"/>) : null }
-          { this.state.showBminChord ? (<img src={image9} alt="The fingering pattern of the B minor Chord"/>) : null }
-          { this.state.showCminChord ? (<img src={image10} alt="The fingering pattern of the C minor Chord"/>) : null }
-          { this.state.showDminChord ? (<img src={image11} alt="The fingering pattern of the D minor Chord"/>) : null }
-          { this.state.showEminChord ? (<img src={image12} alt="The fingering pattern of the E minor Chord"/>) : null }
-          { this.state.showFminChord ? (<img src={image13} alt="The fingering pattern of the F minor Chord"/>) : null }
-          { this.state.showGminChord ? (<img src={image14} alt="The fingering pattern of the G minor Chord"/>) : null }
+
+          {/* Note: this.state.chords[0].(chordname) is referencing the firebase database and pulling the stored image URLs that are passed to the src attribute */}
+
+          {this.state.showAmajChord ? (<img src={this.state.chords[0].aMajor} alt="The fingering pattern of the A major Chord"/>) : null}
+          {this.state.showBmajChord ? (<img src={this.state.chords[0].bMajor} alt="The fingering pattern of the B major Chord"/>) : null}
+          {this.state.showCmajChord ? (<img src={this.state.chords[0].cMajor} alt="The fingering pattern of the C major Chord"/>) : null}
+          {this.state.showDmajChord ? (<img src={this.state.chords[0].dMajor} alt="The fingering pattern of the D major Chord"/>) : null}
+          {this.state.showEmajChord ? (<img src={this.state.chords[0].eMajor} alt="The fingering pattern of the E major Chord"/>) : null}
+          {this.state.showFmajChord ? (<img src={this.state.chords[0].fMajor} alt="The fingering pattern of the F major Chord"/>) : null}
+          {this.state.showGmajChord ? (<img src={this.state.chords[0].gMajor} alt="The fingering pattern of the G major Chord"/>) : null}
+          {this.state.showAminChord ? (<img src={this.state.chords[0].aMinor} alt="The fingering pattern of the A minor Chord"/>) : null}
+          {this.state.showBminChord ? (<img src={this.state.chords[0].bMinor} alt="The fingering pattern of the B minor Chord"/>) : null}
+          {this.state.showCminChord ? (<img src={this.state.chords[0].cMinor} alt="The fingering pattern of the C minor Chord"/>) : null}
+          {this.state.showDminChord ? (<img src={this.state.chords[0].dMinor} alt="The fingering pattern of the D minor Chord"/>) : null}
+          {this.state.showEminChord ? (<img src={this.state.chords[0].eMinor} alt="The fingering pattern of the E minor Chord"/>) : null}
+          {this.state.showFminChord ? (<img src={this.state.chords[0].fMinor} alt="The fingering pattern of the F minor Chord"/>) : null}
+          {this.state.showGminChord ? (<img src={this.state.chords[0].gMinor} alt="The fingering pattern of the G minor Chord"/>) : null}
         </div>
         <footer>
-        <p><span>&#169;</span> Copyright 2020 Usama Asghar <br/> All Rights Reserved.</p>
+          <p><span>&#169;</span> Copyright 2020 Usama Asghar <br/> All Rights Reserved.</p>
         </footer>
       </div>
     );
