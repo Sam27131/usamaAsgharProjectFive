@@ -1,37 +1,23 @@
 {
   "files": {
-    "main.css": "/usamaAsgharProjectFive/static/css/main.e54db41f.chunk.css",
-    "main.js": "/usamaAsgharProjectFive/static/js/main.d4714305.chunk.js",
-    "main.js.map": "/usamaAsgharProjectFive/static/js/main.d4714305.chunk.js.map",
+    "main.css": "/usamaAsgharProjectFive/static/css/main.890e54ba.chunk.css",
+    "main.js": "/usamaAsgharProjectFive/static/js/main.c8d7f28a.chunk.js",
+    "main.js.map": "/usamaAsgharProjectFive/static/js/main.c8d7f28a.chunk.js.map",
     "runtime-main.js": "/usamaAsgharProjectFive/static/js/runtime-main.64581061.js",
     "runtime-main.js.map": "/usamaAsgharProjectFive/static/js/runtime-main.64581061.js.map",
-    "static/js/2.a1861d50.chunk.js": "/usamaAsgharProjectFive/static/js/2.a1861d50.chunk.js",
-    "static/js/2.a1861d50.chunk.js.map": "/usamaAsgharProjectFive/static/js/2.a1861d50.chunk.js.map",
+    "static/js/2.e6cf71cc.chunk.js": "/usamaAsgharProjectFive/static/js/2.e6cf71cc.chunk.js",
+    "static/js/2.e6cf71cc.chunk.js.map": "/usamaAsgharProjectFive/static/js/2.e6cf71cc.chunk.js.map",
     "index.html": "/usamaAsgharProjectFive/index.html",
-    "precache-manifest.6fbe781881ceb91d6742c68e7a9c061d.js": "/usamaAsgharProjectFive/precache-manifest.6fbe781881ceb91d6742c68e7a9c061d.js",
+    "precache-manifest.f1c87f4c17bfd3cc5dcb449803430304.js": "/usamaAsgharProjectFive/precache-manifest.f1c87f4c17bfd3cc5dcb449803430304.js",
     "service-worker.js": "/usamaAsgharProjectFive/service-worker.js",
-    "static/css/main.e54db41f.chunk.css.map": "/usamaAsgharProjectFive/static/css/main.e54db41f.chunk.css.map",
-    "static/js/2.a1861d50.chunk.js.LICENSE.txt": "/usamaAsgharProjectFive/static/js/2.a1861d50.chunk.js.LICENSE.txt",
-    "static/media/Amajor.png": "/usamaAsgharProjectFive/static/media/Amajor.5b6b7115.png",
-    "static/media/Aminor.png": "/usamaAsgharProjectFive/static/media/Aminor.fe45fa68.png",
-    "static/media/Bmajor.png": "/usamaAsgharProjectFive/static/media/Bmajor.f16d4596.png",
-    "static/media/Bminor.png": "/usamaAsgharProjectFive/static/media/Bminor.c4a2debb.png",
-    "static/media/Cmajor.png": "/usamaAsgharProjectFive/static/media/Cmajor.2a09cb5c.png",
-    "static/media/Cminor.png": "/usamaAsgharProjectFive/static/media/Cminor.15802b9a.png",
-    "static/media/Dmajor.png": "/usamaAsgharProjectFive/static/media/Dmajor.d2b707b4.png",
-    "static/media/Dminor.png": "/usamaAsgharProjectFive/static/media/Dminor.dd9b0cbd.png",
-    "static/media/Emajor.png": "/usamaAsgharProjectFive/static/media/Emajor.d9d6d531.png",
-    "static/media/Eminor.png": "/usamaAsgharProjectFive/static/media/Eminor.ff1a318c.png",
-    "static/media/Fmajor.png": "/usamaAsgharProjectFive/static/media/Fmajor.2802def6.png",
-    "static/media/Fminor.png": "/usamaAsgharProjectFive/static/media/Fminor.3bbff0d4.png",
-    "static/media/Gmajor.png": "/usamaAsgharProjectFive/static/media/Gmajor.2e3cd4af.png",
-    "static/media/Gminor.png": "/usamaAsgharProjectFive/static/media/Gminor.30f7b597.png",
-    "static/media/App.css": "/usamaAsgharProjectFive/static/media/keith-misner-h0Vxgz5tyXA-unsplash.f8e7be9e.jpg"
+    "static/css/main.890e54ba.chunk.css.map": "/usamaAsgharProjectFive/static/css/main.890e54ba.chunk.css.map",
+    "static/js/2.e6cf71cc.chunk.js.LICENSE.txt": "/usamaAsgharProjectFive/static/js/2.e6cf71cc.chunk.js.LICENSE.txt",
+    "static/media/index.css": "/usamaAsgharProjectFive/static/media/keith-misner-h0Vxgz5tyXA-unsplash.f8e7be9e.jpg"
   },
   "entrypoints": [
     "static/js/runtime-main.64581061.js",
-    "static/js/2.a1861d50.chunk.js",
-    "static/css/main.e54db41f.chunk.css",
-    "static/js/main.d4714305.chunk.js"
+    "static/js/2.e6cf71cc.chunk.js",
+    "static/css/main.890e54ba.chunk.css",
+    "static/js/main.c8d7f28a.chunk.js"
   ]
 }
