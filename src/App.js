@@ -1,6 +1,6 @@
-////////////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////Pseudocode////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////Pseudocode//////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // This app will allow the user to click on buttons to see all the major and minor chords that can be played on a guitar
 // There are 7 major and 7 minor chords and so the user can click on 14 buttons in total
@@ -9,11 +9,13 @@
 // Individual functions will be applied to each individual button that will trigger only that button's state to toggle between true and false
 // The reason for using boolean states is so ternary conditions can be used
 // Essentially the condition will be 'if this.state.{Name of chord} is true ? display image of that chord (<img> tag) : else, display nothing
+// There is also a comments section where users can leave a comment that will be stored in the firebase database
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 import React, { Component } from 'react';
 import firebase from './firebase';
+import UserComments from './UserComments';
 import './index.css';
 
 class App extends Component {
@@ -44,8 +46,11 @@ class App extends Component {
   }
 
   componentDidMount() {
-    // Creating a variable that holds a reference to the firebase database
-    const imageURLsRef = firebase.database().ref();
+    // The firebase database has 2 objects: an imageURLs object and a userComments object
+    // The imageURLs object is being referenced below
+
+    // Creating a variable that holds a reference to the firebase database referencing the imageURLs object
+    const imageURLsRef = firebase.database().ref('imageURLs');
 
     imageURLsRef.on('value', (response) => {
       
@@ -71,7 +76,7 @@ class App extends Component {
 
   // Below are functions that will be applied to the onClick method on the buttons that will change the states to be true on button click and then false again on the next click
   // Individual toggle functions for each chord are defined so that only the state of the individual button that is clicked on is changed and only that button's image shows
-  // For example, setting the state of showAmajChord to !this.state.showAmajChord will change the state from false to true rendering the image on the screen (see ternary condition statements starting line 206); the next click will again change the state back to false
+  // For example, setting the state of showAmajChord to !this.state.showAmajChord will change the state from false to true rendering the image on the screen (see ternary condition statements further down the code); the next click will again change the state back to false
 
   toggleAmajChord = () => {
     this.setState({
@@ -202,22 +207,24 @@ class App extends Component {
           */}
 
           {/* Note: this.state.chords[0].(chordname) is referencing the firebase database and pulling the stored image URLs that are passed to the src attribute */}
-
-          {this.state.showAmajChord ? (<img src={this.state.chords[0].aMajor} alt="The fingering pattern of the A major Chord"/>) : null}
-          {this.state.showBmajChord ? (<img src={this.state.chords[0].bMajor} alt="The fingering pattern of the B major Chord"/>) : null}
-          {this.state.showCmajChord ? (<img src={this.state.chords[0].cMajor} alt="The fingering pattern of the C major Chord"/>) : null}
-          {this.state.showDmajChord ? (<img src={this.state.chords[0].dMajor} alt="The fingering pattern of the D major Chord"/>) : null}
-          {this.state.showEmajChord ? (<img src={this.state.chords[0].eMajor} alt="The fingering pattern of the E major Chord"/>) : null}
-          {this.state.showFmajChord ? (<img src={this.state.chords[0].fMajor} alt="The fingering pattern of the F major Chord"/>) : null}
-          {this.state.showGmajChord ? (<img src={this.state.chords[0].gMajor} alt="The fingering pattern of the G major Chord"/>) : null}
-          {this.state.showAminChord ? (<img src={this.state.chords[0].aMinor} alt="The fingering pattern of the A minor Chord"/>) : null}
-          {this.state.showBminChord ? (<img src={this.state.chords[0].bMinor} alt="The fingering pattern of the B minor Chord"/>) : null}
-          {this.state.showCminChord ? (<img src={this.state.chords[0].cMinor} alt="The fingering pattern of the C minor Chord"/>) : null}
-          {this.state.showDminChord ? (<img src={this.state.chords[0].dMinor} alt="The fingering pattern of the D minor Chord"/>) : null}
-          {this.state.showEminChord ? (<img src={this.state.chords[0].eMinor} alt="The fingering pattern of the E minor Chord"/>) : null}
-          {this.state.showFminChord ? (<img src={this.state.chords[0].fMinor} alt="The fingering pattern of the F minor Chord"/>) : null}
-          {this.state.showGminChord ? (<img src={this.state.chords[0].gMinor} alt="The fingering pattern of the G minor Chord"/>) : null}
+          
+          {this.state.showAmajChord ? (<img src={this.state.chords[0]} alt="The fingering pattern of the A major Chord"/>) : null}
+          {this.state.showBmajChord ? (<img src={this.state.chords[2]} alt="The fingering pattern of the B major Chord"/>) : null}
+          {this.state.showCmajChord ? (<img src={this.state.chords[4]} alt="The fingering pattern of the C major Chord"/>) : null}
+          {this.state.showDmajChord ? (<img src={this.state.chords[6]} alt="The fingering pattern of the D major Chord"/>) : null}
+          {this.state.showEmajChord ? (<img src={this.state.chords[8]} alt="The fingering pattern of the E major Chord"/>) : null}
+          {this.state.showFmajChord ? (<img src={this.state.chords[10]} alt="The fingering pattern of the F major Chord"/>) : null}
+          {this.state.showGmajChord ? (<img src={this.state.chords[12]} alt="The fingering pattern of the G major Chord"/>) : null}
+          {this.state.showAminChord ? (<img src={this.state.chords[1]} alt="The fingering pattern of the A minor Chord"/>) : null}
+          {this.state.showBminChord ? (<img src={this.state.chords[3]} alt="The fingering pattern of the B minor Chord"/>) : null}
+          {this.state.showCminChord ? (<img src={this.state.chords[5]} alt="The fingering pattern of the C minor Chord"/>) : null}
+          {this.state.showDminChord ? (<img src={this.state.chords[7]} alt="The fingering pattern of the D minor Chord"/>) : null}
+          {this.state.showEminChord ? (<img src={this.state.chords[9]} alt="The fingering pattern of the E minor Chord"/>) : null}
+          {this.state.showFminChord ? (<img src={this.state.chords[11]} alt="The fingering pattern of the F minor Chord"/>) : null}
+          {this.state.showGminChord ? (<img src={this.state.chords[13]} alt="The fingering pattern of the G minor Chord"/>) : null}
         </div>
+        {/* Imported UserComments component */}
+        <UserComments />
         <footer>
           <p><span>&#169;</span> Copyright 2020 Usama Asghar <br/> All Rights Reserved.</p>
         </footer>
