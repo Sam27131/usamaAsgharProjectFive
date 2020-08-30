@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/usamaAsgharProjectFive/static/css/main.a5adfd4a.chunk.css",
+    "main.css": "/usamaAsgharProjectFive/static/css/main.822991de.chunk.css",
     "main.js": "/usamaAsgharProjectFive/static/js/main.558657f5.chunk.js",
     "main.js.map": "/usamaAsgharProjectFive/static/js/main.558657f5.chunk.js.map",
     "runtime-main.js": "/usamaAsgharProjectFive/static/js/runtime-main.64581061.js",
@@ -8,16 +8,16 @@
     "static/js/2.2f9b556f.chunk.js": "/usamaAsgharProjectFive/static/js/2.2f9b556f.chunk.js",
     "static/js/2.2f9b556f.chunk.js.map": "/usamaAsgharProjectFive/static/js/2.2f9b556f.chunk.js.map",
     "index.html": "/usamaAsgharProjectFive/index.html",
-    "precache-manifest.6679e96d422e069e37035998b46e22fa.js": "/usamaAsgharProjectFive/precache-manifest.6679e96d422e069e37035998b46e22fa.js",
+    "precache-manifest.796f48953679c73a135ba88c4d544da2.js": "/usamaAsgharProjectFive/precache-manifest.796f48953679c73a135ba88c4d544da2.js",
     "service-worker.js": "/usamaAsgharProjectFive/service-worker.js",
-    "static/css/main.a5adfd4a.chunk.css.map": "/usamaAsgharProjectFive/static/css/main.a5adfd4a.chunk.css.map",
+    "static/css/main.822991de.chunk.css.map": "/usamaAsgharProjectFive/static/css/main.822991de.chunk.css.map",
     "static/js/2.2f9b556f.chunk.js.LICENSE.txt": "/usamaAsgharProjectFive/static/js/2.2f9b556f.chunk.js.LICENSE.txt",
     "static/media/index.css": "/usamaAsgharProjectFive/static/media/keith-misner-h0Vxgz5tyXA-unsplash.f8e7be9e.jpg"
   },
   "entrypoints": [
     "static/js/runtime-main.64581061.js",
     "static/js/2.2f9b556f.chunk.js",
-    "static/css/main.a5adfd4a.chunk.css",
+    "static/css/main.822991de.chunk.css",
     "static/js/main.558657f5.chunk.js"
   ]
 }
