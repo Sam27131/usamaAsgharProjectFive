@@ -34,6 +34,7 @@ body {
   background-image: url("./assets/keith-misner-h0Vxgz5tyXA-unsplash.jpg");
   background-size: cover;
   background-repeat: no-repeat;
+  background-attachment: fixed;
   text-align: center;
   min-height: 600px;
 }
