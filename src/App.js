@@ -162,15 +162,36 @@ class App extends Component {
     })
   }
 
+  // This function will set all the states to false and will be added to a "Clear All Chords" button below
+  // The user can click this button to quickly remove all chords off the screen rather than click each individual button to toggle them off
+  clearAllChords = () => {
+    this.setState({
+      showAmajChord: false,
+      showBmajChord: false,
+      showCmajChord: false,
+      showDmajChord: false,
+      showEmajChord: false,
+      showFmajChord: false,
+      showGmajChord: false,
+      showAminChord: false,
+      showBminChord: false,
+      showCminChord: false,
+      showDminChord: false,
+      showEminChord: false,
+      showFminChord: false,
+      showGminChord: false,
+    })
+  }
+
   render() {
     return (
       <div className="App wrapper">
         <div className="infoContainer">
-          <h1>learn how to play all the major and minor guitar chords</h1>
-          <h2>click any button below to see a picture of how to play that chord</h2>
+          <h1>learn to play the major and minor guitar chords</h1>
+          {/* <h2>click any button below to see a picture of how to play that chord</h2> */}
+          <p>click a button once to see the picture and click it again to remove it from the screen</p>
         </div>
 
-        <p>click a button once to see the picture and click it again to remove it from the screen</p>
         
         <div className="buttons wrapper">
           <div className="major">
@@ -195,7 +216,7 @@ class App extends Component {
             <button onClick={this.toggleGminChord}>G minor</button>
           </div>
         </div>
-
+        <button onClick={this.clearAllChords}>Clear All Chords</button>
         <div>
 
           {/*

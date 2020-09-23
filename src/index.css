@@ -42,7 +42,7 @@ body {
 /* Main Styles */
 
 .infoContainer,
-p {
+footer p {
   background-color: black;
   border: 5px solid white;
   border-radius: 10px;
@@ -117,6 +117,8 @@ button:hover {
   background-color: rgba(255, 255, 255, 0.5);
   border: 5px solid black;
   border-radius: 10px;
+  width: 50%;
+  margin: 25px auto;
 }
 
 .commentsContainer h2 {
@@ -140,7 +142,7 @@ input {
 
 input {
   height: 100px;
-  width: 500px;
+  width: 90%;
   margin: 25px 0;
   border: 5px solid black;
   border-radius: 10px;
@@ -195,6 +197,10 @@ li {
     display: flex;
     flex-direction: column;
   }
+  
+    .commentsContainer {
+      width: 70%;
+    }
 }
 
 /* Third media query: resizing some fonts on the page */
@@ -207,13 +213,17 @@ li {
   h2 {
     font-size: 3rem;
   }
-
+  
   p {
     font-size: 2rem;
   }
 
-  input {
-    width: 300px;
+  .commentsContainer {
+    width: 90%;
+  }
+
+  footer p {
+    padding: 25px;
   }
 }
 
@@ -241,10 +251,6 @@ li {
   button {
     font-size: 2rem;
     padding: 10px 10px;
-  }
-
-  input {
-    width: 225px;
   }
 }
 
